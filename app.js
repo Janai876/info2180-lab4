@@ -16,9 +16,11 @@ window.onload = () => {
         if(httpRequest.status === 200){
             document.getElementById("txt").innerHTML = httpRequest.responseText;
           }else{
-            console.log('Error Code: ' + xhr.status);
-            console.log('Error Message: ' + xhr.statusText);
+            console.log('Error Code: ' + httpRequest.status);
+            console.log('Error Message: ' + httpRequest.statusText);
           }
       }
     }
-  }
+}
+
+  
