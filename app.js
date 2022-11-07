@@ -1,20 +1,21 @@
 window.onload = () => {
-
     const btn = document.getElementById("search");
+    let url = 'superheroes.php';
     let httpRequest = new XMLHttpRequest();
   
     btn.addEventListener('click', search);
   
     function search(){
-      httpRequest.onreadystatechange = requestaction;
-      httpRequest.open('GET', 'superheroes.php');
-      httpRequest.send();
+        let ext = '?q='+ document.getElementById("field").value;
+        httpRequest.onreadystatechange = requestaction;
+        httpRequest.open('GET', url+ext, true);
+        httpRequest.send();
     }
     
     function requestaction(){
       if(httpRequest.readyState === XMLHttpRequest.DONE){
         if(httpRequest.status === 200){
-            document.getElementById("txt").innerHTML = httpRequest.responseText;
+            document.getElementById("result").innerHTML = httpRequest.responseText;
           }else{
             console.log('Error Code: ' + httpRequest.status);
             console.log('Error Message: ' + httpRequest.statusText);
@@ -22,5 +23,3 @@ window.onload = () => {
       }
     }
 }
-
-  
